@@ -3,6 +3,8 @@
 
 Tweety is a Twitter Clone Built Using Laravel. This is the Final Project from Jeffery Way's Learning Laravel From Scratch Series on Laracasts.
 
+Ensure to run "npm install && npm run dev" to compile resources.
+
 ## Security Vulnerabilities
 
 If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
