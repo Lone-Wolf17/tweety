@@ -7,4 +7,6 @@
         <p class="p-4">No tweets yet.</p>
     @endforelse
 
+    {{ $tweets->links() }}
+
 </div>

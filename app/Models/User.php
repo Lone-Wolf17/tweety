@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Hash;
 
 class User extends Authenticatable
 {
@@ -42,10 +43,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function setPasswordAttribute($value)
+    public function setPasswordAttribute($password)
     {
-
-        $this->attributes['password'] = bcrypt($value);
+        $this->attributes['password'] = Hash::needsRehash($password)
+            ? Hash::make($password) : $password;
     }
 
     public function getAvatarAttribute($value)
@@ -60,7 +61,7 @@ class User extends Authenticatable
 
         return Tweet::whereIn('user_id', $friends)
             ->orWhere('user_id', $this->id)
-            ->latest()->get();
+            ->latest()->paginate();
     }
 
     public function tweets()
