@@ -18,7 +18,9 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'username',
+        'description',
         'avatar',
+        'banner_image',
         'name',
         'email',
         'password',
@@ -53,6 +55,11 @@ class User extends Authenticatable
     {
 
         return asset($value ? 'storage/' . $value : 'images/default-avatar.jpeg');
+    }
+
+    public function getBannerImageAttribute($path)
+    {
+        return asset($path ? 'storage/' . $path : 'images/default-profile-banner.jpg');
     }
 
     public function timeline()

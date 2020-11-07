@@ -30,13 +30,19 @@ class ProfilesController extends Controller
         $attributes = request()->validate([
             'username' => ['string', 'required', 'max:255', 'alpha_dash', Rule::unique('users')->ignore($user)],
             'name' => ['string', 'required', 'max:255'],
-            'avatar' => ['file'],
+            'description' => ['string', 'required', 'max:160',],
+            'avatar' => ['file', 'image|mimes:jpeg,png,jpg'],
+            'banner_image' => ['file', 'image|mimes:jpeg,png,jpg'],
             'email' => ['string', 'required', 'email', 'max:255', Rule::unique('users')->ignore($user)],
-            'password' => ['string', 'required', 'min:8', 'max:255', 'confirmed']
+            'password' => ['string', 'nullable', 'min:8', 'max:255', 'confirmed']
         ]);
 
         if (request('avatar')) {
             $attributes['avatar'] = request('avatar')->store('avatars');
+        }
+
+        if (request('banner_image')) {
+            $attributes['banner_image'] = request('banner_image')->store('banners');
         }
 
         $user->update($attributes);

@@ -1,9 +1,12 @@
 <x-app>
     <header class="mb-6 relative">
         <div class="relative">
-            <img src="\images\default-profile-banner.jpg"
+            <img src="{{ $user->banner_image }}"
                  alt=""
                  class="mb-2"
+                 width="700"
+                 height="223"
+                 style="max-height: 223px; max-width: 700px; border-radius: 3%;"
             >
 
             <img
@@ -11,7 +14,8 @@
                 alt=""
                 class="rounded-full mr-2 absolute bottom-0 transform -translate-x-1/2 translate-y-1/2"
                 width="150"
-                style="left: 50%"
+                height="150"
+                style="left: 50%; max-height: 150px"
             >
         </div>
 
@@ -35,10 +39,9 @@
         </div>
 
         <p class="text-sm">
-            The name's Bugs. Bugs Bunny. Don't wear it out. Bugs is an anthropomorphic gray
-            and white rabbit or hare who is famous for his flippant insouciant personality.
-            He is also characterised by a Brooklyn accent, his portrayal as a trickster,
-            and his catch phrase "Eh ... What's up, doc?"
+
+            {{ $user->description ?: "Eh ... What's up, doc?. No Bio yet, Follow me to know me" }}
+
         </p>
 
     </header>

@@ -47,6 +47,30 @@
 
         <div class="mb-6">
             <label class="block mb-2 uppercase font-bold text-xs text-gray-700"
+                   for="description"
+            >
+                Bio
+
+            </label>
+
+            <textarea class="border border-gray-400 p-2 w-full"
+                      type="text"
+                      name="description"
+                      id="description"
+                      maxlength="160"
+                      required
+
+            >{{ $user->description?: old('description') }}
+            </textarea>
+
+            @error('description')
+            <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
+            @enderror
+
+        </div>
+
+        <div class="mb-6">
+            <label class="block mb-2 uppercase font-bold text-xs text-gray-700"
                    for="avatar"
             >
                 Avatar
@@ -67,6 +91,32 @@
             </div>
 
             @error('avatar')
+            <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
+            @enderror
+        </div>
+
+        <div class="mb-6">
+            <label class="block mb-2 uppercase font-bold text-xs text-gray-700"
+                   for="banner_image"
+            >
+                Banner Image
+            </label>
+            <div class="flex">
+
+                <input class="border border-gray-400 p-2 w-full"
+                       type="file"
+                       name="banner_image"
+                       id="banner_image"
+                >
+
+                <img src="{{ $user->banner_image }}"
+                     alt="your banner image"
+                     width="150"
+                >
+
+            </div>
+
+            @error('banner')
             <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
             @enderror
         </div>
@@ -97,7 +147,7 @@
             <label class="block mb-2 uppercase font-bold text-xs text-gray-700"
                    for="password"
             >
-                Password
+                Password (Optional)
 
             </label>
 
@@ -105,7 +155,6 @@
                    type="password"
                    name="password"
                    id="password"
-                   required
             >
 
             @error('password')
@@ -118,7 +167,7 @@
             <label class="block mb-2 uppercase font-bold text-xs text-gray-700"
                    for="password_confirmation"
             >
-                Password Confirmation
+                Password Confirmation (Optional)
 
             </label>
 
@@ -126,7 +175,6 @@
                    type="password"
                    name="password_confirmation"
                    id="password_confirmation"
-                   required
             >
 
             @error('password_confirmation')
