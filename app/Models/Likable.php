@@ -56,4 +56,12 @@ trait Likable
     {
         return $this->hasMany(Like::class);
     }
+
+    public function delete(User $user = null)
+    {
+        return Like::where([
+            ['user_id', $user ? $user->id : auth()->id()],
+            ['tweet_id', $this->id]
+        ])->delete();
+    }
 }
