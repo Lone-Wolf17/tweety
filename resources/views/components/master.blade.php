@@ -35,6 +35,8 @@
 </div>
 
 <script src="https://unpkg.com/turbolinks"></script>
+<script src="//code.jquery.com/jquery.js"></script>
+@include('flashy::message')
 </body>
 </html>
 

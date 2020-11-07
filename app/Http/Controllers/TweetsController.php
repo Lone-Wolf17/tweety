@@ -32,6 +32,8 @@ class TweetsController extends Controller
             'body' => $attributes['body']
         ]);
 
+
+        flashy()->info('Your Tweet successfully published');
         return redirect()->route('home');
     }
 }

@@ -9,7 +9,7 @@ trait Followable
 
     public function toggleFollow(User $user)
     {
-        $this->follows()->toggle($user);
+        return $this->follows()->toggle($user);
     }
 
     public function isFollowing(User $user)

@@ -13,6 +13,14 @@ class FollowsController extends Controller
             ->user()
             ->toggleFollow($user);
 
+        if (current_user()->isFollowing($user)) {
+            $message = "You just followed ";
+        } else {
+            $message = "You just unfollowed ";
+        }
+
+        flashy()->info($message . $user->name);
+
         return back();
     }
 
