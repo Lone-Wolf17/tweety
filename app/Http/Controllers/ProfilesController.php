@@ -45,6 +45,10 @@ class ProfilesController extends Controller
             $attributes['banner_image'] = request('banner_image')->store('banners');
         }
 
+        if (!request('password')) {
+            $attributes['password'] = $user->getAuthPassword();
+        }
+
         $user->update($attributes);
 
         return redirect($user->path());
