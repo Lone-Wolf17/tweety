@@ -25,6 +25,8 @@ Route::get('/', function () {
 Route::middleware('auth')->group(function () {
     Route::post('/tweets', [TweetsController::class, 'store']);
     Route::get('/tweets', [TweetsController::class, 'index'])->name('home');
+    Route::delete('/tweets/{tweet}', [TweetsController::class, 'destroy'])
+        ->middleware('can:destroy,tweet');
 
     Route::post('tweets/{tweet}/like', [TweetsLikesController::class, 'store']);
     Route::delete('tweets/{tweet}/like', [TweetsLikesController::class, 'destroy']);

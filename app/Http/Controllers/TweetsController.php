@@ -36,4 +36,12 @@ class TweetsController extends Controller
         flashy()->info('Your Tweet successfully published');
         return redirect()->route('home');
     }
+
+    public function destroy(Tweet $tweet)
+    {
+        Tweet::where('id', $tweet->id)->delete();
+
+        flashy()->primaryDark('Tweet successfully deleted');
+        return back();
+    }
 }
